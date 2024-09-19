@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Menú - Ramón Perdomo</title>
+        <style>
+
+            :root {
+                --color-primario: #d2c530;
+                --color-secundario: #333;
+                --color-secundario-claro: #565656;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            h4 {
+                margin: 0;
+                padding: 0;
+                text-align: left;
+                text-transform: uppercase;
+                color: var(--color-primario);
+            }
+
+            a, a:visited {
+                color: white;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: var(--color-primario);
+            }
+
+            nav {
+                background-color: var(--color-secundario);
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.5s;
+            }
+
+            nav > ul > li {
+                display: inline-block;
+                text-align: center;
+            }
+
+            nav .nav-link {
+                padding: 20px;
+                min-width: 50px;
+            }
+
+            nav .nav-link {
+                border-left: 1px solid white;
+            }
+
+            nav .nav-link:last-child {
+                border-right: 1px solid white;
+            }
+            
+            nav .perfil {
+                position: absolute;
+                right: 0;
+                padding: 20px;
+            }
+
+            .opciones {
+                display: none;
+                position: absolute;
+                background-color: var(--color-secundario-claro);
+                color: white;
+                padding: 10px;
+                margin-top: 20px;
+                margin-left: -20px;
+                line-height: 2.5;
+            }
+
+            .opciones ul {
+                text-align: left !important;
+            }
+
+            nav ul, .opciones ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav .nav-link:hover .opciones,
+            nav .nav-link .opciones:hover {
+                display: block;
+            }
+
+            .contenedor {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .columna {
+                width: 50%;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li class="nav-link">
+                    <a href="#">Materias</a>
+                    <div class="opciones">
+                        <div class="contenedor">
+                            <div class="columna">
+                                <h4>Presenciales</h4>
+                                <ul>
+                                    <li><a href="#">Programación III</a></li>
+                                    <li><a href="#">Base de Datos II</a></li>
+                                    <li><a href="#">Sistemas Operativos</a></li>
+                                    <li><a href="#">Inglés II</a></li>
+                                </ul>
+                            </div>
+                            <div class="columna">
+                                <h4>Virtuales</h4>
+                                <ul>
+                                    <li><a href="#">Cálculo II</a></li>
+                                    <li><a href="#">Teoría de los Compiladores</a></li>
+                                    <li><a href="#">Estructura de Datos</a></li>
+                                    <li><a href="#">Inglés I</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-link">
+                    <a href="#">Calificaciones</a>
+                    <div class="opciones">
+                        <ul>
+                            <li><a href="#">Kardex Académico</a></li>
+                            <li><a href="#">Calificaciones Parciales</a></li>
+                            <li><a href="#">Calificaciones Finales</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-link">
+                    <a href="#">Cuenta</a>
+                    <div class="opciones">
+                        <div class="contenedor">
+                            <div class="columna">
+                                <h4>Perfil</h4>
+                                <ul>
+                                    <li><a href="#">Datos Personales</a></li>
+                                    <li><a href="#">Datos Académicos</a></li>
+                                    <li><a href="#">Datos Laborales</a></li>
+                                </ul>
+                            </div>
+                            <div class="columna">
+                                <h4>Configuración</h4>
+                                <ul>
+                                    <li><a href="#">Cambiar Contraseña</a></li>
+                                    <li><a href="#">Cambiar Correo</a></li>
+                                    <li><a href="#">Cambiar Foto</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li class="perfil">
+                    <a href="https://github.com/ramonpdm">Ramón Perdomo</a>
+                </li>
+            </ul>
+        </nav>
+    </body>
+</html>
