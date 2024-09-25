@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Modulo 10 - Ramón Perdomo</title>
+        <style>
+            :root {
+                --color-primario: #d2c530;
+                --color-secundario: #333;
+                --color-secundario-claro: #565656;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            .contenedor {
+                color: white;
+                padding: 20px;
+                background-color: var(--color-secundario-claro);
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="contenedor">
+            <label for="cedula">Cédula</label>
+            <input id="cedula" type="text" placeholder="Ingrese su cédula...">
+        </div>
+        <br>
+        <div class="contenedor" id="resultado">
+            <span>Resultado:</span><br><br>
+        </div>
+        <script type="application/javascript">
+            document.addEventListener('DOMContentLoaded', function () {
+                // Algunos ejemplos
+                validarCedula('4021531765888')
+                validarCedula('40215317658')
+                validarCedula('00424616324')
+                validarCedula('42341231522')
+                validarCedula('40242676856')
+
+                const cedulaInput = document.getElementById('cedula');
+
+                // Use mod 10
+                cedulaInput.addEventListener('input', (event) => {
+                    // Limpiar el resultado
+                    const resultadoDiv = document.getElementById('resultado');
+                    resultadoDiv.innerHTML = `<span>Resultado:</span><br><br>`;
+
+                    const cedula = event.target.value;
+                    validarCedula(cedula);
+                })
+            })
+
+            const mostrarResultado = (mensaje) => {
+                const resultadoDiv = document.getElementById('resultado');
+                resultadoDiv.innerHTML += `<span>${mensaje}</span><br>`;
+            }
+
+            const validarCedula = (cedula) => {
+                // Remover guiones o espacios de la cédula
+                cedula = cedula.replace(/-/g, '').trim();
+
+                if (cedula.length !== 11) {
+                    return mostrarResultado(`La cédula '${cedula}' debe tener 11 digitos`)
+                }
+
+                // El dv seria el ultimo dígito de la cedula
+                const digitoVerificador = parseInt(cedula.charAt(10));
+
+                let suma = 0;
+
+                // Recorremos la cédula de derecha a izquierda
+                for (let i = 0; i < 10; i++) {
+                    // Convertir la letra en numero
+                    let digito = parseInt(cedula.charAt(i));
+
+                    // Alternar entre multiplicar por 1 y por 2
+                    // viendo si el indice es par o impar
+                    if ((i % 2) === 0) {
+                        digito *= 1;
+                    } else {
+                        digito *= 2;
+                    }
+
+                    // Si el resultado de la multiplicación es mayor
+                    // que 9, sumamos los dígitos del resultado, por
+                    // ejemplo, 12 seria 1 + 2 = 3
+                    if (digito > 9) {
+                        digito = Math.floor(digito / 10) + (digito % 10);
+                    }
+
+                    suma += digito;
+                }
+
+                // Calcular el residuo de la suma
+                const residuo = suma % 10;
+
+                // Si el residuo es diferente de 0, restar de 
+                // 10 para obtener el dígito calculado
+                const digitoCalculado = (residuo === 0) ? 0 : 10 - residuo;
+
+                // Comparar el dígito calculado con el dígito verificador
+                if (digitoCalculado === digitoVerificador)
+                    return mostrarResultado(`La cédula '${cedula}' es correcta!`)
+
+                return mostrarResultado(`La cédula '${cedula}' es inválida`)
+            }
+        </script>
+    </body>
+</html>
