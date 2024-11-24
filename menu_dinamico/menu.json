@@ -1,0 +1,140 @@
+[
+    {
+        "id": 5,
+        "nombre": "Programación III",
+        "enlace": "#",
+        "padre_id": 1
+    },
+    {
+        "id": 22,
+        "nombre": "Unidad 1",
+        "enlace": "#",
+        "padre_id": 5
+    },
+    {
+        "id": 23,
+        "nombre": "Unidad 2",
+        "enlace": "#",
+        "padre_id": 5
+    },
+    {
+        "id": 24,
+        "nombre": "Tema 1",
+        "enlace": "#",
+        "padre_id": 23
+    },
+    {
+        "id": 25,
+        "nombre": "Tema 2",
+        "enlace": "#",
+        "padre_id": 23
+    },
+    {
+        "id": 6,
+        "nombre": "Base de Datos II",
+        "enlace": "#",
+        "padre_id": 1
+    },
+    {
+        "id": 7,
+        "nombre": "Sistemas Operativos",
+        "enlace": "#",
+        "padre_id": 1
+    },
+    {
+        "id": 8,
+        "nombre": "Inglés II",
+        "enlace": "#",
+        "padre_id": 1
+    },
+    {
+        "id": 9,
+        "nombre": "Cálculo II",
+        "enlace": "#",
+        "padre_id": 1
+    },
+    {
+        "id": 10,
+        "nombre": "Teoría de los Compiladores",
+        "enlace": "#",
+        "padre_id": 1
+    },
+    {
+        "id": 11,
+        "nombre": "Estructura de Datos",
+        "enlace": "#",
+        "padre_id": 1
+    },
+    {
+        "id": 12,
+        "nombre": "Inglés I",
+        "enlace": "#",
+        "padre_id": 1
+    },
+    {
+        "id": 2,
+        "nombre": "Calificaciones",
+        "enlace": "#",
+        "padre_id": null
+    },
+    {
+        "id": 13,
+        "nombre": "Kardex Académico",
+        "enlace": "#",
+        "padre_id": 2
+    },
+    {
+        "id": 14,
+        "nombre": "Calificaciones Parciales",
+        "enlace": "#",
+        "padre_id": 2
+    },
+    {
+        "id": 15,
+        "nombre": "Calificaciones Finales",
+        "enlace": "#",
+        "padre_id": 2
+    },
+    {
+        "id": 3,
+        "nombre": "Cuenta",
+        "enlace": "#",
+        "padre_id": null
+    },
+    {
+        "id": 16,
+        "nombre": "Datos Personales",
+        "enlace": "#",
+        "padre_id": 3
+    },
+    {
+        "id": 17,
+        "nombre": "Datos Académicos",
+        "enlace": "#",
+        "padre_id": 3
+    },
+    {
+        "id": 18,
+        "nombre": "Datos Laborales",
+        "enlace": "#",
+        "padre_id": 3
+    },
+    {
+        "id": 19,
+        "nombre": "Cambiar Contraseña",
+        "enlace": "#",
+        "padre_id": 3
+    },
+    {
+        "id": 20,
+        "nombre": "Cambiar Correo",
+        "enlace": "#",
+        "padre_id": 3
+    },
+    {
+        "id": 4,
+        "nombre": "Ramón Perdomo",
+        "enlace": "https:\/\/github.com\/ramonpdm",
+        "padre_id": null
+    }
+]

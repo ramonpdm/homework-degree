@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Menú - Ramón Perdomo</title>
+        <style>
+            :root {
+                --color-primario: #d2c530;
+                --color-secundario: #333;
+                --color-secundario-claro: #565656;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+
+            h4 {
+                margin: 0;
+                padding: 0;
+                text-align: left;
+                text-transform: uppercase;
+                color: var(--color-primario);
+            }
+
+            a, a:visited {
+                color: white;
+                text-decoration: none;
+            }
+
+            a:hover {
+                color: var(--color-primario);
+            }
+
+            nav {
+                background-color: var(--color-secundario);
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.5s;
+            }
+
+            nav > ul > li {
+                display: inline-block;
+                text-align: center;
+            }
+
+            nav .nav-link {
+                position: relative;
+                padding: 20px;
+                min-width: 50px;
+                text-wrap: nowrap;
+            }
+
+            nav > ul > .nav-link {
+                padding: 20px;
+                min-width: 50px;
+                border-left: 1px solid white;
+            }
+
+            nav > ul > .nav-link:last-of-type {
+                border-right: 1px solid white;
+            }
+
+            nav > ul > .nav-link > .opciones {
+                top: 100%;
+                left: 0;
+            }
+
+            .opciones {
+                display: none;
+                position: absolute;
+                top: 0;
+                left: 100%;
+                background-color: var(--color-secundario-claro);
+                color: white;
+            }
+
+            .opciones ul {
+                text-align: left !important;
+            }
+
+            nav ul, .opciones ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            nav .nav-link:hover > .opciones,
+            nav .nav-link .opciones:hover {
+                display: block;
+            }
+
+            nav .nav-link:hover {
+                background-color: var(--color-secundario);
+            }
+
+            form {
+                margin-top: 20px;
+                padding: 20px;
+                background-color: var(--color-secundario-claro);
+                color: white;
+            }
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+
+            input, select {
+                margin-bottom: 10px;
+                padding: 5px;
+                width: 100%;
+            }
+
+            button {
+                padding: 10px;
+                background-color: var(--color-primario);
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: #b0a02c;
+            }
+
+            @media (max-width: 768px) {
+                nav {
+                    flex-direction: column;
+                }
+
+                nav > ul {
+                    display: flex;
+                    flex-direction: column;
+                    width: 100%;
+                }
+
+                nav > ul > li {
+                    width: 100%;
+                    text-align: left;
+                }
+
+                nav .nav-link {
+                    padding: 10px;
+                    min-width: auto;
+                }
+
+                nav > ul > .nav-link {
+                    border-left: none;
+                    border-right: none;
+                    border-bottom: 1px solid white;
+                }
+
+                nav > ul > .nav-link:last-of-type {
+                    border-bottom: none;
+                }
+
+                .opciones {
+                    position: static;
+                    background-color: var(--color-secundario);
+                }
+
+                .opciones ul {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav id="nav-contenedor"></nav>
+        <div>
+            <form id="actualizar-form">
+                <h4>Actualizar Opciones</h4>
+                <br>
+                <label for="seleccionar-opcion">Seleccionar Opción:</label>
+                <select id="seleccionar-opcion" name="seleccionar-opcion">
+                </select>
+                <br>
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+                <br>
+                <label for="enlace">Enlace:</label>
+                <input type="text" id="enlace" name="enlace" required>
+                <br>
+                <label for="padre">Padre:</label>
+                <select id="padre" name="padre">
+                    <option value="" selected>Ninguno</option>
+                </select>
+                <br>
+                <button type="submit" name="accion" value="eliminar">Eliminar</button>
+                <button type="submit" name="accion" value="actualizar">Actualizar</button>
+                <button type="submit" name="accion" value="agregar">Agregar</button>
+            </form>
+        </div>
+        <script type="application/javascript">
+            let data = [];
+
+            document.addEventListener('DOMContentLoaded', async () => {
+                data = await getMenuData();
+                await crearMenu();
+                crearFormulario();
+            });
+
+            async function getMenuData() {
+                const response = await fetch('./menu.json');
+                return response.json();
+            }
+
+            async function crearMenu() {
+                const navContainer = document.getElementById('nav-contenedor');
+                const itemContainer = document.createElement('ul');
+
+                const rootItems = data.filter(item => item.padre_id === null);
+                rootItems.forEach(item => itemContainer.appendChild(crearEnlace(item)));
+
+                navContainer.innerHTML = '';
+                navContainer.appendChild(itemContainer);
+            }
+
+            function crearFormulario() {
+                const form = document.getElementById('actualizar-form');
+                const opcionSelect = document.getElementById('seleccionar-opcion');
+                const padreSelect = document.getElementById('padre');
+
+                data.forEach(item => {
+                    const option = document.createElement('option');
+                    option.value = item.id;
+                    option.textContent = item.nombre;
+                    opcionSelect.appendChild(option);
+
+                    const parentOption = document.createElement('option');
+                    parentOption.value = item.id;
+                    parentOption.textContent = item.nombre;
+                    padreSelect.appendChild(parentOption);
+                });
+
+                opcionSelect.addEventListener('change', e => {
+                    const nombreInput = document.getElementById('nombre');
+                    const enlaceInput = document.getElementById('enlace');
+                    const optionId = parseInt(opcionSelect.value);
+                    const item = data.find(item => item.id === optionId);
+
+                    nombreInput.value = item.nombre;
+                    enlaceInput.value = item.enlace;
+                    padreSelect.value = item.padre_id ? item.padre_id : '';
+                });
+
+                form.addEventListener('submit', async e => {
+                    e.preventDefault();
+
+                    const opcionId = parseInt(opcionSelect.value);
+                    const padreId = parseInt(padreSelect.value);
+                    const boton = e.submitter;
+                    const accion = boton.value;
+
+                    const nombreInput = document.getElementById('nombre').value;
+                    const enlaceInput = document.getElementById('enlace').value;
+
+                    const item = data.find(item => item.id === opcionId);
+                    item.nombre = nombreInput;
+                    item.enlace = enlaceInput;
+                    item.padre_id = padreId;
+
+                    if (accion === 'agregar') {
+                        delete item.id;
+                    }
+
+                    await fetch('./procesar.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            accion,
+                            item
+                        })
+                    })
+                        .then((response) => response.json())
+                        .then(async (response) => {
+                            if (response.estado === 'error') {
+                                alert(response.mensaje);
+                                return null;
+                            } else {
+                                data = await getMenuData();
+                                await crearMenu();
+                            }
+                        })
+                });
+            }
+
+            function crearEnlace(item) {
+                const li = document.createElement('li');
+                li.className = 'nav-link';
+
+                const a = document.createElement('a');
+                a.href = item.enlace || '#';
+                a.textContent = item.nombre;
+                li.appendChild(a);
+
+                const hijos = data.filter(subItem => subItem.padre_id === item.id);
+
+                if (hijos.length > 0) {
+                    const divOpciones = document.createElement('div');
+                    divOpciones.className = 'opciones';
+
+                    const ul = document.createElement('ul');
+                    hijos.forEach(subItem => ul.appendChild(crearEnlace(subItem)));
+
+                    divOpciones.appendChild(ul);
+                    li.appendChild(divOpciones);
+                }
+
+                return li;
+            }
+        </script>
+    </body>
+</html>
