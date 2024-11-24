@@ -1,0 +1,107 @@
+/* Variables */
+:root {
+    --color-primario: #d2c530;
+    --color-secundario: #333;
+    --color-secundario-claro: #565656;
+}
+
+/* Estilos base */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f4f4f4;
+}
+
+.card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+}
+
+h4 {
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color-primario);
+}
+
+/* Formularios */
+form {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: var(--color-secundario-claro);
+    color: white;
+    text-align: left;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input, select {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 96%;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Botones */
+button, .add-btn, .edit-btn, .delete-btn {
+    padding: 5px 10px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 4px;
+}
+
+.add-btn:hover, .edit-btn:hover, button:hover {
+    background-color: #b0a02c;
+}
+
+.delete-btn {
+    background-color: #d9534f;
+}
+
+.delete-btn:hover {
+    background-color: #c9302c;
+}
+
+/* Tablas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--color-secundario-claro);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
