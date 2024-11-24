@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Formulario con Gráficos</title>
+        <link rel="stylesheet" href="style.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <div class="card">
+            <h4>Formulario con Graficos</h4>
+            <form id="ventas-form">
+                <label for="mes">Mes:</label>
+                <select id="mes" name="mes">
+                    <option value="Enero">Enero</option>
+                    <option value="Febrero">Febrero</option>
+                    <option value="Marzo">Marzo</option>
+                    <option value="Abril">Abril</option>
+                    <option value="Mayo">Mayo</option>
+                    <option value="Junio">Junio</option>
+                    <option value="Julio">Julio</option>
+                    <option value="Agosto">Agosto</option>
+                    <option value="Septiembre">Septiembre</option>
+                    <option value="Octubre">Octubre</option>
+                    <option value="Noviembre">Noviembre</option>
+                    <option value="Diciembre">Diciembre</option>
+                </select>
+                <label for="ventas">Ventas (RD$):</label>
+                <input type="number" id="ventas" name="ventas" min="0" placeholder="RD$256,000.00" required>
+                <button type="submit">Actualizar</button>
+            </form>
+            <small style="color: #919191">NOTA: Decidí usar <a href="https://www.chartjs.org/">Chart.js</a> y generar datos aleatorios para las ventas de cada mes.</small>
+            <canvas id="ventasChart" width="400" height="200"></canvas>
+        </div>
+        <script>
+            const ctx = document.getElementById('ventasChart').getContext('2d');
+            const colorBarras = 'rgba(75, 192, 192, 0.2)';
+            const colorBorde = 'rgba(75, 192, 192, 1)';
+            const datosAleatorios = Array.from({ length: 12 }, () => Math.floor(Math.random() * 1000000));
+
+            const ventasChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Enero',
+                        'Febrero',
+                        'Marzo',
+                        'Abril',
+                        'Mayo',
+                        'Junio',
+                        'Julio',
+                        'Agosto',
+                        'Septiembre',
+                        'Octubre',
+                        'Noviembre',
+                        'Diciembre'
+                    ],
+                    datasets: [{
+                        label: 'Ventas en RD$',
+                        data: datosAleatorios,
+                        backgroundColor: colorBarras,
+                        borderColor: colorBorde,
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+
+            document.getElementById('ventas-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                const mes = document.getElementById('mes').value;
+                const ventas = parseFloat(document.getElementById('ventas').value.replace(/[^0-9.-]+/g, ""));
+                const mesIndex = ventasChart.data.labels.indexOf(mes);
+                ventasChart.data.datasets[0].data[mesIndex] = ventas;
+                ventasChart.update();
+            });
+        </script>
+    </body>
+</html>

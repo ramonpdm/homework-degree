@@ -1,0 +1,72 @@
+/* Variables */
+:root {
+    --color-primario: #d2c530;
+    --color-primario-claro: #f0eb4e;
+    --color-secundario: #333;
+    --color-secundario-claro: #565656;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; /* Evita el desbordamiento */
+}
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 100%;
+    box-sizing: border-box; /* Asegura que el padding no cause desbordamiento */
+}
+
+h4 {
+    margin-bottom: 20px;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--color-primario);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select, input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px;
+    background-color: var(--color-primario);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: var(--color-primario-claro);
+}
+
+canvas {
+    margin-top: 20px;
+    max-width: 100%;
+}
