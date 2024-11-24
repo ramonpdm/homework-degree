@@ -1,0 +1,41 @@
+{
+    "personas": [
+        {
+            "nombre": "Ram\u00f3n Perdomo",
+            "edad": 22,
+            "genero": "Masculino",
+            "familiares": [
+                {
+                    "parentesco": "pareja",
+                    "id": 2
+                }
+            ],
+            "id": "1"
+        },
+        {
+            "nombre": "Arleen Villar",
+            "edad": 21,
+            "genero": "Masculino",
+            "familiares": [],
+            "id": 2
+        }
+    ],
+    "enfermedades": [
+        {
+            "id": 1,
+            "persona_id": 1,
+            "nombre": "Diabetes",
+            "tiempo": "1 a\u00f1o",
+            "detalles": "Primer grado"
+        }
+    ],
+    "internamientos": [
+        {
+            "id": 1,
+            "persona_id": 1,
+            "fecha": "2024-11-08",
+            "centro_medico": "Centro M\u00e9dico Moderno",
+            "diagnostico": "Diabetes"
+        }
+    ]
+}
