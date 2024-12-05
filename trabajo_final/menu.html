@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Trabajo Final - Proyectos - Ramon Perdomo</title>
+        <link href="bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <header>
+            <div class="navbar navbar-dark bg-dark shadow-sm">
+                <div class="container">
+                    <a href="#" class="navbar-brand d-flex align-items-center">
+                        <strong>Proyectos</strong>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="album py-5 bg-body-tertiary">
+                <div class="container">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" id="contenedor-tarjetas">
+                        <!-- JS -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <script>
+            const datos = [
+                {
+                    "titulo": "Página Web Personal en HTML",
+                    "url": "https://ramonpdm.github.io/",
+                    "thumbnail": "https://ramonpdm.github.io/thumbnail_perfil.png"
+                },
+                {
+                    "titulo": "102 Etiquetas HTML",
+                    "url": "https://ramonpdm.github.io/etiquetas.html",
+                    "thumbnail": "https://ramonpdm.github.io/thumbnail_etiquetas.png"
+                },
+                {
+                    "titulo": "Estructura de Menús con CSS",
+                    "url": "https://ramonpdm.github.io/menu.html",
+                    "thumbnail": "https://ramonpdm.github.io/thumbnail_menu.png"
+                },
+                {
+                    "titulo": "Validar Cédula con Módulo 10",
+                    "url": "https://ramonpdm.github.io/modulo10.html",
+                    "thumbnail": "https://ramonpdm.github.io/thumbnail_modulo10.png"
+                },
+                {
+                    "titulo": "Menú Dinámico con JSON",
+                    "url": "http://ramonpdm.infinityfreeapp.com/menu_dinamico/",
+                    "thumbnail": "http://ramonpdm.infinityfreeapp.com/menu_dinamico/thumbnail.png"
+                },
+                {
+                    "titulo": "Formulario Múltiples Páginas",
+                    "url": "http://ramonpdm.infinityfreeapp.com/formulario_multiples_paginas",
+                    "thumbnail": "http://ramonpdm.infinityfreeapp.com/formulario_multiples_paginas/thumbnail.png"
+                },
+                {
+                    "titulo": "Formulario de Contactos con QR",
+                    "url": "http://ramonpdm.infinityfreeapp.com/formulario_contactos",
+                    "thumbnail": "http://ramonpdm.infinityfreeapp.com/formulario_contactos/thumbnail.png"
+                },
+                {
+                    "titulo": "Formulario con Gráficos",
+                    "url": "http://ramonpdm.infinityfreeapp.com/formulario_graficos/",
+                    "thumbnail": "http://ramonpdm.infinityfreeapp.com/formulario_graficos/thumbnail.png"
+                },
+                {
+                    "titulo": "Formulario con Acceso a BD",
+                    "url": "http://ramonpdm.infinityfreeapp.com/formulario_acceso_bd",
+                    "thumbnail": "http://ramonpdm.infinityfreeapp.com/formulario_acceso_bd/thumbnail.png"
+                },
+                {
+                    "titulo": "Servicio Módulo 10",
+                    "url": "http://ramonpdm.infinityfreeapp.com/servicio_modulo10/api.php?cedula=40215317658",
+                    "thumbnail": "http://ramonpdm.infinityfreeapp.com/servicio_modulo10/thumbnail.png"
+                }
+            ];
+
+            const contenedor = document.getElementById('contenedor-tarjetas');
+            datos.forEach(item => {
+                const tarjeta = document.createElement('div');
+                tarjeta.className = 'col';
+                tarjeta.innerHTML = `
+                    <div class="card shadow-sm">
+                        <img src="${item.thumbnail}" class="bd-placeholder-img card-img-top" width="100%" height="225" alt="${item.titulo}">
+                        <div class="card-body">
+                            <p class="card-text">${item.titulo}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="${item.url}" target="_blank" class="btn btn-sm btn-outline-secondary">Ver</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                contenedor.appendChild(tarjeta);
+            });
+        </script>
+    </body>
+</html>

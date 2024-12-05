@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Iniciar Sesión - Ramon Perdomo</title>
+        <link href="bootstrap.min.css" rel="stylesheet">
+        <style>
+            html,
+            body {
+                height: 100%;
+            }
+
+            .form-signin {
+                max-width: 330px;
+                padding: 1rem;
+            }
+
+            .form-signin .form-floating:focus-within {
+                z-index: 2;
+            }
+
+            .form-signin input[type="email"] {
+                margin-bottom: -1px;
+                border-bottom-right-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+
+            .form-signin input[type="password"] {
+                margin-bottom: 10px;
+                border-top-left-radius: 0;
+                border-top-right-radius: 0;
+            }
+
+        </style>
+    </head>
+    <body class="d-flex align-items-center py-4 bg-body-tertiary">
+
+        <main class="form-signin w-100 m-auto">
+            <form>
+                <h1 class="h3 mb-3 fw-normal">Iniciar Sesión</h1>
+
+                <div class="form-floating">
+                    <input type="email" class="form-control" id="correo" placeholder="name@example.com">
+                    <label for="correo">Correo electrónico</label>
+                </div>
+                <div class="form-floating">
+                    <input type="password" class="form-control" id="contrasena" placeholder="Contraseña">
+                    <label for="contrasena">Contraseña</label>
+                </div>
+
+                <a class="btn btn-primary w-100 py-2" href="menu.html">Entrar</a>
+            </form>
+        </main>
+    </body>
+</html>
