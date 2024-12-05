@@ -19,7 +19,7 @@ class DataLoader
         $this->data = $data;
     }
 
-    public function getData(): array
+    public function findAll(): array
     {
         return $this->data;
     }

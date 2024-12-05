@@ -36,7 +36,7 @@ class EnfermedadController extends Controller
             return json_encode(reset($enfermedad) ?: []);
         } elseif ($personaId) {
             $enfermedades = array_filter($data, fn ($e) => $e['persona_id'] == $personaId);
-            return json_encode($enfermedades);
+            return json_encode(array_values($enfermedades));
         }
 
         return json_encode(['error' => 'ID no proporcionado']);

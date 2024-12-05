@@ -113,7 +113,8 @@ class PersonController extends Controller
         $index = array_search($id, array_column($data, 'id'));
 
         if ($index !== false) {
-            $data[$index] = $person + ['id' => $id];
+            unset($person['familiares']);
+            $data[$index] = $person + $data[$index];
             $this->dataLoader->saveData($data, 'personas');
             return $person;
         }
